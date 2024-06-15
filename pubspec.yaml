@@ -7,8 +7,10 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
+  reorderables: ^0.6.0
   flutter:
     sdk: flutter
+  
 
 dev_dependencies:
   flutter_test:
