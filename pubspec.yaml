@@ -8,9 +8,10 @@ environment:
 
 dependencies:
   reorderables: ^0.6.0
+  shared_preferences: ^2.0.9
+  flutter_svg: ^1.0.0 
   flutter:
     sdk: flutter
-  
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +20,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/fonts/
+    - assets/icons/
+
+  fonts:
+    - family: SFPro
+      fonts:
+        - asset: assets/fonts/SF-Pro-Text-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Text-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Text-Bold.otf
+          weight: 700
