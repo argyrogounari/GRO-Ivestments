@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackaithon/reaordable_list.dart';
+import 'package:hackaithon/onboarding/1geting_started.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home Page'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: ElevatedButton(
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ReorderableListPage()),
+              MaterialPageRoute(builder: (context) => Onboarding()),
             );
           },
         ),

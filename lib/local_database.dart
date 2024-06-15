@@ -17,6 +17,24 @@ class Company {
   });
 }
 
+class UserChoices {
+  int? investmentRisk;
+  int? investmentExperience;
+  int? investmentAmount;
+  String? esgFocus;
+  double? donationPercentage;
+  bool? decideLater;
+
+  UserChoices({
+    this.investmentRisk,
+    this.investmentExperience,
+    this.investmentAmount,
+    this.esgFocus,
+    this.donationPercentage,
+    this.decideLater,
+  });
+}
+
 final List<SDGGoal> sdgGoals = [
   SDGGoal(number: 1, description: "No Poverty"),
   SDGGoal(number: 2, description: "Zero Hunger"),
