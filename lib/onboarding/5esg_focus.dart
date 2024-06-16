@@ -3,22 +3,47 @@ import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
 import 'package:hackaithon/onboarding/6donation.dart';
 
-class EsgFocusPage extends StatefulWidget {
-  final UserChoices userChoices;
+class SDGGoal {
+  final int number;
+  final String description;
 
-  EsgFocusPage({required this.userChoices});
-
-  @override
-  _EsgFocusPageState createState() => _EsgFocusPageState();
+  SDGGoal({required this.number, required this.description});
 }
 
-class _EsgFocusPageState extends State<EsgFocusPage> {
-  String? _selectedEsg;
+class GoalsSelectionPage extends StatefulWidget {
+  final UserChoices userChoices;
+
+  GoalsSelectionPage({required this.userChoices});
 
   @override
-  void initState() {
-    super.initState();
-    _selectedEsg = widget.userChoices.esgFocus;
+  _GoalsSelectionPageState createState() => _GoalsSelectionPageState();
+}
+
+class _GoalsSelectionPageState extends State<GoalsSelectionPage> {
+  List<int> selectedGoals = [];
+
+  void _onGoalSelected(int index) {
+    setState(() {
+      if (selectedGoals.contains(index)) {
+        selectedGoals.remove(index);
+      } else {
+        if (selectedGoals.length < 5) {
+          selectedGoals.add(index);
+        }
+      }
+    });
+  }
+
+  void _onNextPressed() {
+    if (selectedGoals.length == 5) {
+      widget.userChoices.selectedGoals = selectedGoals;
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DonationPage(userChoices: widget.userChoices),
+        ),
+      );
+    }
   }
 
   @override
@@ -41,9 +66,12 @@ class _EsgFocusPageState extends State<EsgFocusPage> {
                 Text(
                   'ROBO INVESTOR',
                   style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontFamily: 'SFPro',
+                    fontWeight: FontWeight.w600,
+                    height: 0,
+                    letterSpacing: -0.05,
                   ),
                 ),
                 IconButton(
@@ -58,118 +86,130 @@ class _EsgFocusPageState extends State<EsgFocusPage> {
             Text(
               'SUSTAINABILITY VALUES',
               style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-                fontWeight: FontWeight.bold,
+                color: Color(0xFF46A771),
+                fontSize: 12,
+                fontFamily: 'SFPro',
+                fontWeight: FontWeight.w600,
+                height: 0,
+                letterSpacing: -0.05,
+              ),
+            ),
+            SizedBox(height: 10),
+            SizedBox(
+              width: 346,
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Which of these ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'SF Pro Text',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'sustainable development goals',
+                      style: TextStyle(
+                        color: Color(0xFF46A771),
+                        fontSize: 24,
+                        fontFamily: 'SF Pro Text',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '? that matter to you?',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'SF Pro Text',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 10),
             Text(
-              'Which of these ESG goals do you want to focus on?',
+              'Select 5 goals',
               style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 12,
+                fontFamily: 'SFPro',
+                fontWeight: FontWeight.w600,
+                height: 0,
+                letterSpacing: -0.05,
               ),
             ),
             SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedEsg = 'Environmental';
-                      });
-                    },
+            Expanded(
+              child: ListView.builder(
+                itemCount: sdgGoals.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () => _onGoalSelected(index),
                     child: Container(
-                      color: _selectedEsg == 'Environmental'
-                          ? Colors.grey[300]
-                          : Colors.transparent,
-                      child: Column(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 12.0),
+                      margin: const EdgeInsets.symmetric(vertical: 4.0),
+                      decoration: BoxDecoration(
+                        color: selectedGoals.contains(index)
+                            ? Color(0xFFE8F5E9)
+                            : Color(0xFFFAFAFA),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
                         children: [
-                          Container(
-                            height: 100,
-                            color: Colors.grey,
+                          Radio<int>(
+                            value: index,
+                            groupValue:
+                                selectedGoals.contains(index) ? index : null,
+                            onChanged: (value) => _onGoalSelected(index),
+                            activeColor: Color(0xFF46A771),
                           ),
-                          SizedBox(height: 10),
-                          Text('Environmental'),
+                          SizedBox(width: 5),
+                          Text(
+                            sdgGoals[index].description,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'SFPro',
+                              fontWeight: FontWeight.w600,
+                              height: 0,
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedEsg = 'Social';
-                      });
-                    },
-                    child: Container(
-                      color: _selectedEsg == 'Social'
-                          ? Colors.grey[300]
-                          : Colors.transparent,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 100,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(height: 10),
-                          Text('Social'),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedEsg = 'Governance';
-                      });
-                    },
-                    child: Container(
-                      color: _selectedEsg == 'Governance'
-                          ? Colors.grey[300]
-                          : Colors.transparent,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 100,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(height: 10),
-                          Text('Governance'),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                  );
+                },
+              ),
             ),
-            Spacer(),
+            Text(
+              '${selectedGoals.length}/5',
+              style: TextStyle(
+                color: Color(0xFF46A771),
+                fontSize: 12,
+                fontFamily: 'SFPro',
+                fontWeight: FontWeight.w600,
+                height: 0,
+                letterSpacing: -0.05,
+              ),
+            ),
+            SizedBox(height: 16),
             Align(
               alignment: Alignment.bottomCenter,
               child: SizedBox(
                 width: double.infinity,
                 child: CustomButton(
                   text: "Next",
-                  onPressed: () {
-                    widget.userChoices.esgFocus = _selectedEsg;
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DonationPage(
-                          userChoices: widget.userChoices,
-                        ),
-                      ),
-                    );
-                  },
-                  isEnabled: true,
+                  onPressed: _onNextPressed,
+                  isEnabled: selectedGoals.length == 5,
                 ),
               ),
             ),

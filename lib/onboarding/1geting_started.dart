@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
-import 'package:hackaithon/onboarding/3experience.dart';
 import 'package:hackaithon/onboarding/2risks.dart';
 
 class Onboarding extends StatelessWidget {
@@ -9,7 +8,7 @@ class Onboarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(0),
+        padding: const EdgeInsets.only(right: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

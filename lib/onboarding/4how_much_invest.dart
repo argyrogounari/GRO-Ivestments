@@ -136,8 +136,8 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              EsgFocusPage(userChoices: widget.userChoices)),
+                          builder: (context) => GoalsSelectionPage(
+                              userChoices: widget.userChoices)),
                     );
                   },
                   isEnabled: true,

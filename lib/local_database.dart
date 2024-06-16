@@ -26,6 +26,7 @@ class UserChoices {
   bool? decideLater;
   String? initialInvestment;
   String? monthlyInvestment;
+  List<int> selectedGoals = [];
 
   UserChoices({
     this.investmentRisk,
@@ -48,14 +49,14 @@ final List<SDGGoal> sdgGoals = [
   SDGGoal(number: 6, description: "Clean Water and Sanitation"),
   SDGGoal(number: 7, description: "Affordable and Clean Energy"),
   SDGGoal(number: 8, description: "Decent Work and Economic Growth"),
-  SDGGoal(number: 9, description: "Industry, Innovation, and Infrastructure"),
+  SDGGoal(number: 9, description: "Industry and Innovation"),
   SDGGoal(number: 10, description: "Reduced Inequality"),
-  SDGGoal(number: 11, description: "Sustainable Cities and Communities"),
-  SDGGoal(number: 12, description: "Responsible Consumption and Production"),
+  SDGGoal(number: 11, description: "Sustainable Cities"),
+  SDGGoal(number: 12, description: "Responsible Consumption"),
   SDGGoal(number: 13, description: "Climate Action"),
   SDGGoal(number: 14, description: "Life Below Water"),
   SDGGoal(number: 15, description: "Life on Land"),
-  SDGGoal(number: 16, description: "Peace, Justice, and Strong Institutions"),
+  SDGGoal(number: 16, description: "Peace and Justice"),
   SDGGoal(number: 17, description: "Partnerships for the Goals"),
 ];
 
