@@ -82,7 +82,7 @@ class InvestmentPage extends StatelessWidget {
                   color: Colors.white,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/recommended_graph1.png', // Make sure to update this path to your image path
+                      'assets/images/graphh.png', // Make sure to update this path to your image path
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -149,12 +149,51 @@ class InvestmentPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AllocationRow(label: 'Stocks', percentage: 0.6),
+                      AllocationRow(label: 'Apple', percentage: 0.6),
                       SizedBox(height: 10),
-                      AllocationRow(label: 'Indices', percentage: 0.3),
+                      AllocationRow(label: 'Microsoft', percentage: 0.3),
                       SizedBox(height: 10),
-                      AllocationRow(label: 'Commodities', percentage: 0.1),
+                      AllocationRow(label: 'Other', percentage: 0.1),
                     ],
+                  ),
+                ),
+                SizedBox(height: 27),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Sustainability ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontFamily: 'SFPro',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'Impact',
+                        style: TextStyle(
+                          color: Color(0xFF46A771),
+                          fontSize: 16,
+                          fontFamily: 'SFPro',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 15),
+                Container(
+                  width: 344,
+                  height: 281,
+                  color: Colors.white,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/sas_graph.png', // Make sure to update this path to your image path
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 SizedBox(height: 27),
@@ -233,149 +272,6 @@ class InvestmentPage extends StatelessWidget {
                   value: '+21.99%',
                 ),
                 SizedBox(height: 40),
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Sustainability ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: 'SFPro',
-                          fontWeight: FontWeight.w700,
-                          height: 0,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Impact',
-                        style: TextStyle(
-                          color: Color(0xFF46A771),
-                          fontSize: 16,
-                          fontFamily: 'SFPro',
-                          fontWeight: FontWeight.w700,
-                          height: 0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  width: 344,
-                  height: 81,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFFAFAFA),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 18,
-                        top: 12,
-                        child: SizedBox(
-                          width: 296,
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '5 year projection of your ',
-                                  style: TextStyle(
-                                    color: Color(0xFF595D62),
-                                    fontSize: 9,
-                                    fontFamily: 'SFPro',
-                                    fontWeight: FontWeight.w500,
-                                    height: 0,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: 'impact on the environment',
-                                  style: TextStyle(
-                                    color: Color(0xFF46A771),
-                                    fontSize: 9,
-                                    fontFamily: 'SFPro',
-                                    fontWeight: FontWeight.w500,
-                                    height: 0,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: ' based on your investment portfolio ',
-                                  style: TextStyle(
-                                    color: Color(0xFF595D62),
-                                    fontSize: 9,
-                                    fontFamily: 'SFPro',
-                                    fontWeight: FontWeight.w500,
-                                    height: 0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 159,
-                        top: 40,
-                        child: Text(
-                          '60% Impact',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 9,
-                            fontFamily: 'SFPro',
-                            fontWeight: FontWeight.w700,
-                            height: 0,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 15.27,
-                        top: 55,
-                        child: Container(
-                          width: 314.49,
-                          height: 6,
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 0,
-                                top: 0,
-                                child: Opacity(
-                                  opacity: 0.25,
-                                  child: Container(
-                                    width: 314.49,
-                                    height: 6,
-                                    decoration: ShapeDecoration(
-                                      color: Color(0xFF46A771),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(2.50),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                left: 0,
-                                top: 0,
-                                child: Container(
-                                  width: 188.69,
-                                  height: 6,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF46A771),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(2)),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
                 if (userChoices.donationPercentage != null &&
                     userChoices.donationPercentage! > 0)
                   SizedBox(
@@ -507,6 +403,120 @@ class InvestmentPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class testtt extends StatelessWidget {
+  const testtt({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Positioned(
+          left: 18,
+          top: 12,
+          child: SizedBox(
+            width: 296,
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: '5 year projection of your ',
+                    style: TextStyle(
+                      color: Color(0xFF595D62),
+                      fontSize: 9,
+                      fontFamily: 'SFPro',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'impact on the environment',
+                    style: TextStyle(
+                      color: Color(0xFF46A771),
+                      fontSize: 9,
+                      fontFamily: 'SFPro',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  ),
+                  TextSpan(
+                    text: ' based on your investment portfolio ',
+                    style: TextStyle(
+                      color: Color(0xFF595D62),
+                      fontSize: 9,
+                      fontFamily: 'SFPro',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          left: 159,
+          top: 40,
+          child: Text(
+            '60% Impact',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 9,
+              fontFamily: 'SFPro',
+              fontWeight: FontWeight.w700,
+              height: 0,
+            ),
+          ),
+        ),
+        Positioned(
+          left: 15.27,
+          top: 55,
+          child: Container(
+            width: 314.49,
+            height: 6,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Opacity(
+                    opacity: 0.25,
+                    child: Container(
+                      width: 314.49,
+                      height: 6,
+                      decoration: ShapeDecoration(
+                        color: Color(0xFF46A771),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.50),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Container(
+                    width: 188.69,
+                    height: 6,
+                    decoration: ShapeDecoration(
+                      color: Color(0xFF46A771),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
