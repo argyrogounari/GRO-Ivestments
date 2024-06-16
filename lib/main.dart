@@ -6,6 +6,8 @@ import 'package:hackaithon/2markets/markets.dart';
 import 'package:hackaithon/3portfolio/portfolio.dart';
 import 'package:hackaithon/4donate/donate.dart';
 import 'package:hackaithon/5more/more.dart';
+import 'package:hackaithon/local_database.dart';
+import 'package:hackaithon/onboarding/7recommended.dart';
 
 void main() {
   runApp(MyApp());
