@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/custom_toggle.dart';
 import 'package:hackaithon/local_database.dart';
-import 'package:hackaithon/onboarding/99contribute.dart';
+import 'package:hackaithon/onboarding/7recommended.dart';
 
 class DonationPage extends StatefulWidget {
   final UserChoices userChoices;
@@ -198,7 +198,7 @@ class _DonationPageState extends State<DonationPage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            ContributePage(userChoices: widget.userChoices),
+                            InvestmentPage(userChoices: widget.userChoices),
                       ),
                     );
                   },
