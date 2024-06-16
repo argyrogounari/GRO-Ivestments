@@ -24,6 +24,8 @@ class UserChoices {
   String? esgFocus;
   double? donationPercentage;
   bool? decideLater;
+  String? initialInvestment;
+  String? monthlyInvestment;
 
   UserChoices({
     this.investmentRisk,
@@ -32,6 +34,8 @@ class UserChoices {
     this.esgFocus,
     this.donationPercentage,
     this.decideLater,
+    this.initialInvestment,
+    this.monthlyInvestment,
   });
 }
 

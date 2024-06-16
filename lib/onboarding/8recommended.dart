@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
-import 'package:hackaithon/onboarding/8invest_amount.dart';
+import 'package:hackaithon/main.dart';
 import 'package:hackaithon/risk_metric.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -492,7 +492,9 @@ class InvestmentPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => InvestmentInputPage(),
+                            builder: (context) => BottomNavigationBarApp(
+                              isFirstHome: false,
+                            ),
                           ),
                         );
                       },

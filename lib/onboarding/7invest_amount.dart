@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hackaithon/custom_button.dart';
-import 'package:hackaithon/main.dart';
+import 'package:hackaithon/local_database.dart';
+import 'package:hackaithon/onboarding/8recommended.dart';
 
 class InvestmentInputPage extends StatefulWidget {
+  final UserChoices userChoices;
+
+  InvestmentInputPage({required this.userChoices});
+
   @override
   _InvestmentInputPageState createState() => _InvestmentInputPageState();
 }
@@ -193,14 +198,17 @@ class _InvestmentInputPageState extends State<InvestmentInputPage> {
               child: SizedBox(
                 width: double.infinity,
                 child: CustomButton(
-                  text: "Invest",
+                  text: "Show recommendations",
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    widget.userChoices.initialInvestment =
+                        _initialInvestmentController.text;
+                    widget.userChoices.monthlyInvestment =
+                        _monthlyInvestmentController.text;
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNavigationBarApp(
-                          isFirstHome: false,
-                        ),
+                        builder: (context) =>
+                            InvestmentPage(userChoices: widget.userChoices),
                       ),
                     );
                   },

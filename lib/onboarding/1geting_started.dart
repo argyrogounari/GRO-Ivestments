@@ -9,7 +9,7 @@ class Onboarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,47 +23,61 @@ class Onboarding extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Text(
-              'ROBO INVESTOR',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-                fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+              child: Text(
+                'ROBO INVESTOR',
+                style: TextStyle(
+                  color: Color(0xFF46A771),
+                  fontSize: 12,
+                  fontFamily: 'SFPro',
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                  letterSpacing: -0.05,
+                ),
               ),
             ),
             SizedBox(height: 10),
-            Text(
-              'We make investments\naligned with your values',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+              child: Text(
+                'We make investments\naligned with your values',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(height: 20),
             Container(
-              width: double.infinity,
-              height: 250,
-              color: Colors.grey[300],
-              // You can add an image here by replacing this Container with an Image widget
+              width: 390,
+              height: 265,
+              child: Image.asset(
+                'assets/images/onboarding_start.png',
+                fit: BoxFit.contain,
+              ),
             ),
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                width: double.infinity,
-                child: CustomButton(
-                  text: "Let's Begin",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Risks(
-                          userChoices: UserChoices(),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: CustomButton(
+                    text: "Let's Begin",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Risks(
+                            userChoices: UserChoices(),
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  isEnabled: true,
+                      );
+                    },
+                    isEnabled: true,
+                  ),
                 ),
               ),
             ),

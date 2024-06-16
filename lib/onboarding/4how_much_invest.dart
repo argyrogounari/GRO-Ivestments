@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hackaithon/custom_button.dart';
+import 'package:hackaithon/custom_toggle.dart';
 import 'package:hackaithon/local_database.dart';
 import 'package:hackaithon/onboarding/5esg_focus.dart';
-import 'package:hackaithon/custom_toggle.dart';
 
 class InvestmentAmountPage extends StatefulWidget {
   final UserChoices userChoices;
@@ -136,13 +136,11 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EsgFocusPage(
-                          userChoices: widget.userChoices,
-                        ),
-                      ),
+                          builder: (context) =>
+                              EsgFocusPage(userChoices: widget.userChoices)),
                     );
                   },
-                  isEnabled: _selectedAmount != null,
+                  isEnabled: true,
                 ),
               ),
             ),
