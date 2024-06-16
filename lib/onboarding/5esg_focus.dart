@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
 import 'package:hackaithon/onboarding/6donation.dart';
 
@@ -153,29 +154,22 @@ class _EsgFocusPageState extends State<EsgFocusPage> {
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                onPressed: () {
-                  widget.userChoices.esgFocus = _selectedEsg;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DonationPage(userChoices: widget.userChoices)),
-                  );
-                },
-                child: Text(
-                  "Next",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+              child: SizedBox(
+                width: double.infinity,
+                child: CustomButton(
+                  text: "Next",
+                  onPressed: () {
+                    widget.userChoices.esgFocus = _selectedEsg;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DonationPage(
+                          userChoices: widget.userChoices,
+                        ),
+                      ),
+                    );
+                  },
+                  isEnabled: true,
                 ),
               ),
             ),

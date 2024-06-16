@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hackaithon/1home/home.dart';
+import 'package:hackaithon/1home/first_home.dart';
+import 'package:hackaithon/1home/second_home.dart';
 import 'package:hackaithon/2markets/markets.dart';
 import 'package:hackaithon/3portfolio/portfolio.dart';
 import 'package:hackaithon/4donate/donate.dart';
@@ -15,21 +16,46 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bottom Navigation Demo',
-      home: BottomNavigationBarApp(),
+      theme: ThemeData(
+        scaffoldBackgroundColor:
+            Colors.white, // Set your desired background color here
+      ),
+      home: BottomNavigationBarApp(
+        isFirstHome: true,
+      ),
     );
   }
 }
 
 class BottomNavigationBarApp extends StatefulWidget {
+  final bool isFirstHome;
+
+  BottomNavigationBarApp({required this.isFirstHome});
+
   @override
   _BottomNavigationBarAppState createState() => _BottomNavigationBarAppState();
 }
 
 class _BottomNavigationBarAppState extends State<BottomNavigationBarApp> {
   int _selectedIndex = 0;
+  bool _isFirstHome = true;
 
-  static final List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
+  @override
+  void initState() {
+    super.initState();
+    _isFirstHome = widget.isFirstHome;
+  }
+
+  static final List<Widget> _firstWidgetOptions = <Widget>[
+    FirstHomePage(),
+    MarketsPage(),
+    PortfolioPage(),
+    DonatePage(),
+    MorePage(),
+  ];
+
+  static final List<Widget> _secondWidgetOptions = <Widget>[
+    SecondHomePage(),
     MarketsPage(),
     PortfolioPage(),
     DonatePage(),
@@ -47,10 +73,11 @@ class _BottomNavigationBarAppState extends State<BottomNavigationBarApp> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: _widgetOptions,
+        children: _isFirstHome ? _firstWidgetOptions : _secondWidgetOptions,
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: SvgPicture.asset(

@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
-import 'package:hackaithon/onboarding/5esg_focus.dart';
+import 'package:hackaithon/onboarding/3experience.dart';
 import 'package:hackaithon/custom_toggle.dart';
 
-class InvestmentAmountPage extends StatefulWidget {
+class Risks extends StatefulWidget {
   final UserChoices userChoices;
 
-  InvestmentAmountPage({required this.userChoices});
+  Risks({required this.userChoices});
 
   @override
-  _InvestmentAmountPageState createState() => _InvestmentAmountPageState();
+  _RisksState createState() => _RisksState();
 }
 
-class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
-  int? _selectedAmount;
+class _RisksState extends State<Risks> {
+  int? _selectedRisk;
 
   @override
   void initState() {
     super.initState();
-    _selectedAmount = widget.userChoices.investmentAmount;
+    _selectedRisk = widget.userChoices.investmentRisk;
   }
 
   @override
@@ -58,7 +58,7 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 24),
             Text(
               'INVESTMENT GOALS',
               style: TextStyle(
@@ -72,9 +72,8 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
             ),
             SizedBox(height: 10),
             SizedBox(
-              width: 346,
               child: Text(
-                'How much do you invest or plan to invest per year?',
+                'How you feel about investment risk and reward?',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -88,39 +87,63 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
             Column(
               children: [
                 CustomToggleButton(
-                  text: '0 - \$5,000',
-                  isSelected: _selectedAmount == 0,
+                  text: 'Very Low Risk',
+                  isSelected: _selectedRisk == 0,
                   onPressed: () {
                     setState(() {
-                      _selectedAmount = 0;
+                      _selectedRisk = 0;
                     });
                   },
                   value: 0,
-                  groupValue: _selectedAmount ?? -1,
+                  groupValue: _selectedRisk ?? -1,
                 ),
                 SizedBox(height: 7),
                 CustomToggleButton(
-                  text: '\$5,000 - \$10,000',
-                  isSelected: _selectedAmount == 1,
+                  text: 'Low Risk',
+                  isSelected: _selectedRisk == 1,
                   onPressed: () {
                     setState(() {
-                      _selectedAmount = 1;
+                      _selectedRisk = 1;
                     });
                   },
                   value: 1,
-                  groupValue: _selectedAmount ?? -1,
+                  groupValue: _selectedRisk ?? -1,
                 ),
                 SizedBox(height: 7),
                 CustomToggleButton(
-                  text: '\$10,000 and above',
-                  isSelected: _selectedAmount == 2,
+                  text: 'Moderate Risk',
+                  isSelected: _selectedRisk == 2,
                   onPressed: () {
                     setState(() {
-                      _selectedAmount = 2;
+                      _selectedRisk = 2;
                     });
                   },
                   value: 2,
-                  groupValue: _selectedAmount ?? -1,
+                  groupValue: _selectedRisk ?? -1,
+                ),
+                SizedBox(height: 7),
+                CustomToggleButton(
+                  text: 'High Risk',
+                  isSelected: _selectedRisk == 3,
+                  onPressed: () {
+                    setState(() {
+                      _selectedRisk = 3;
+                    });
+                  },
+                  value: 3,
+                  groupValue: _selectedRisk ?? -1,
+                ),
+                SizedBox(height: 7),
+                CustomToggleButton(
+                  text: 'Very High Risk',
+                  isSelected: _selectedRisk == 4,
+                  onPressed: () {
+                    setState(() {
+                      _selectedRisk = 4;
+                    });
+                  },
+                  value: 4,
+                  groupValue: _selectedRisk ?? -1,
                 ),
               ],
             ),
@@ -132,17 +155,17 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
                 child: CustomButton(
                   text: "Next",
                   onPressed: () {
-                    widget.userChoices.investmentAmount = _selectedAmount;
+                    widget.userChoices.investmentRisk = _selectedRisk;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EsgFocusPage(
+                        builder: (context) => InvestmentExperiencePage(
                           userChoices: widget.userChoices,
                         ),
                       ),
                     );
                   },
-                  isEnabled: _selectedAmount != null,
+                  isEnabled: _selectedRisk != null,
                 ),
               ),
             ),

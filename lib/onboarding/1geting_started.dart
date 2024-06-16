@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
-import 'package:hackaithon/onboarding/3risks.dart';
+import 'package:hackaithon/onboarding/3experience.dart';
+import 'package:hackaithon/onboarding/2risks.dart';
 
 class Onboarding extends StatelessWidget {
   @override
@@ -47,29 +49,21 @@ class Onboarding extends StatelessWidget {
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
+              child: SizedBox(
+                width: double.infinity,
+                child: CustomButton(
+                  text: "Let's Begin",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
                         builder: (context) => Risks(
-                              userChoices: UserChoices(),
-                            )),
-                  );
-                },
-                child: Text(
-                  "Let's Begin",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+                          userChoices: UserChoices(),
+                        ),
+                      ),
+                    );
+                  },
+                  isEnabled: true,
                 ),
               ),
             ),

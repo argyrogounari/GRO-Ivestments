@@ -7,8 +7,6 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
-  reorderables: ^0.6.0
-  shared_preferences: ^2.0.9
   flutter_svg: ^1.0.0 
   flutter:
     sdk: flutter
@@ -23,6 +21,7 @@ flutter:
   assets:
     - assets/fonts/
     - assets/icons/
+    - assets/images/
 
   fonts:
     - family: SFPro

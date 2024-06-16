@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
 import 'package:hackaithon/main.dart';
 
@@ -38,7 +39,9 @@ class ContributePage extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNavigationBarApp(),
+                        builder: (context) => BottomNavigationBarApp(
+                          isFirstHome: true,
+                        ),
                       ),
                       (Route<dynamic> route) =>
                           false, // Removes all previous routes
@@ -87,28 +90,21 @@ class ContributePage extends StatelessWidget {
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BottomNavigationBarApp(),
-                    ),
-                  );
-                },
-                child: Text(
-                  "Finish",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+              child: SizedBox(
+                width: double.infinity,
+                child: CustomButton(
+                  text: "Finish",
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BottomNavigationBarApp(
+                          isFirstHome: false,
+                        ),
+                      ),
+                    );
+                  },
+                  isEnabled: true,
                 ),
               ),
             ),

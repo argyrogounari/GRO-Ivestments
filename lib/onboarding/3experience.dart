@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:hackaithon/custom_button.dart';
 import 'package:hackaithon/local_database.dart';
-import 'package:hackaithon/onboarding/5esg_focus.dart';
+import 'package:hackaithon/onboarding/4how_much_invest.dart';
 import 'package:hackaithon/custom_toggle.dart';
 
-class InvestmentAmountPage extends StatefulWidget {
+class InvestmentExperiencePage extends StatefulWidget {
   final UserChoices userChoices;
 
-  InvestmentAmountPage({required this.userChoices});
+  InvestmentExperiencePage({required this.userChoices});
 
   @override
-  _InvestmentAmountPageState createState() => _InvestmentAmountPageState();
+  _InvestmentExperiencePageState createState() =>
+      _InvestmentExperiencePageState();
 }
 
-class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
-  int? _selectedAmount;
+class _InvestmentExperiencePageState extends State<InvestmentExperiencePage> {
+  int? _selectedExperience;
 
   @override
   void initState() {
     super.initState();
-    _selectedAmount = widget.userChoices.investmentAmount;
+    _selectedExperience = widget.userChoices.investmentExperience;
   }
 
   @override
@@ -72,13 +73,12 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
             ),
             SizedBox(height: 10),
             SizedBox(
-              width: 346,
               child: Text(
-                'How much do you invest or plan to invest per year?',
+                'How experienced are you when it comes to investing?',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
-                  fontFamily: 'SFPro',
+                  fontFamily: 'SF Pro Text',
                   fontWeight: FontWeight.w700,
                   height: 0,
                 ),
@@ -88,39 +88,39 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
             Column(
               children: [
                 CustomToggleButton(
-                  text: '0 - \$5,000',
-                  isSelected: _selectedAmount == 0,
+                  text: 'Less than 1 year',
+                  isSelected: _selectedExperience == 0,
                   onPressed: () {
                     setState(() {
-                      _selectedAmount = 0;
+                      _selectedExperience = 0;
                     });
                   },
                   value: 0,
-                  groupValue: _selectedAmount ?? -1,
+                  groupValue: _selectedExperience ?? -1,
                 ),
                 SizedBox(height: 7),
                 CustomToggleButton(
-                  text: '\$5,000 - \$10,000',
-                  isSelected: _selectedAmount == 1,
+                  text: '1 - 3 years',
+                  isSelected: _selectedExperience == 1,
                   onPressed: () {
                     setState(() {
-                      _selectedAmount = 1;
+                      _selectedExperience = 1;
                     });
                   },
                   value: 1,
-                  groupValue: _selectedAmount ?? -1,
+                  groupValue: _selectedExperience ?? -1,
                 ),
                 SizedBox(height: 7),
                 CustomToggleButton(
-                  text: '\$10,000 and above',
-                  isSelected: _selectedAmount == 2,
+                  text: 'More than 3 years',
+                  isSelected: _selectedExperience == 2,
                   onPressed: () {
                     setState(() {
-                      _selectedAmount = 2;
+                      _selectedExperience = 2;
                     });
                   },
                   value: 2,
-                  groupValue: _selectedAmount ?? -1,
+                  groupValue: _selectedExperience ?? -1,
                 ),
               ],
             ),
@@ -132,17 +132,18 @@ class _InvestmentAmountPageState extends State<InvestmentAmountPage> {
                 child: CustomButton(
                   text: "Next",
                   onPressed: () {
-                    widget.userChoices.investmentAmount = _selectedAmount;
+                    widget.userChoices.investmentExperience =
+                        _selectedExperience;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EsgFocusPage(
+                        builder: (context) => InvestmentAmountPage(
                           userChoices: widget.userChoices,
                         ),
                       ),
                     );
                   },
-                  isEnabled: _selectedAmount != null,
+                  isEnabled: _selectedExperience != null,
                 ),
               ),
             ),
